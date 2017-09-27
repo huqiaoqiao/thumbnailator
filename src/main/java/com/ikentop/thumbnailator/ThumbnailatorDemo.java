@@ -18,6 +18,7 @@ import java.io.OutputStream;
 public class ThumbnailatorDemo {
 
     private static final String imageUrl = "src\\main\\resources\\image\\sights.jpg";
+    private static final String watermarkUrl = "src\\main\\resources\\image\\diaphaneity.jpg";
 
     /**
      * 指定大小缩放图片
@@ -39,8 +40,8 @@ public class ThumbnailatorDemo {
     /**
      * 不按照比例,指定大小进行缩放
      *
-     * @param width 宽
-     * @param height 高
+     * @param width 指定宽度
+     * @param height 指定高度
      */
     public static void zoomSizeKeepAspectRatio(int width, int height) {
         try {
@@ -88,7 +89,7 @@ public class ThumbnailatorDemo {
 
     /**
      * 给图片添加水印
-     *
+     * watermark(水印的位置,水印的图片,水印的透明度)
      * @param diaphaneity   水印透明度 0~1
      * @param outputQuality 图片输出质量,0~1
      */
@@ -96,7 +97,7 @@ public class ThumbnailatorDemo {
         try {
             Thumbnails.of(imageUrl)
                     .size(700, 500)
-                    .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File("src\\main\\resources\\image\\diaphaneity.jpg")), diaphaneity)
+                    .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(watermarkUrl)), diaphaneity)
                     .outputQuality(outputQuality)
                     .toFile("F:\\image\\sight_watermark.jpg");
         } catch (IOException e) {
@@ -106,7 +107,7 @@ public class ThumbnailatorDemo {
 
     /**
      * 裁剪图片
-     *
+     * 裁剪后的宽高和size中的宽高需成正比,切比其大
      * @param x      裁剪的横左标
      * @param y      裁剪的纵坐标
      * @param width  裁剪后的宽
