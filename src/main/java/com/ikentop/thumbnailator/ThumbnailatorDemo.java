@@ -18,6 +18,7 @@ import java.io.OutputStream;
 public class ThumbnailatorDemo {
 
     private static final String imageUrl = "src\\main\\resources\\image\\sights.jpg";
+
     /**
      * 指定大小缩放图片
      *
@@ -38,8 +39,8 @@ public class ThumbnailatorDemo {
     /**
      * 不按照比例,指定大小进行缩放
      *
-     * @param width
-     * @param height
+     * @param width 宽
+     * @param height 高
      */
     public static void zoomSizeKeepAspectRatio(int width, int height) {
         try {
@@ -88,7 +89,7 @@ public class ThumbnailatorDemo {
     /**
      * 给图片添加水印
      *
-     * @param diaphaneity   水印透明度
+     * @param diaphaneity   水印透明度 0~1
      * @param outputQuality 图片输出质量,0~1
      */
     public static void watermarkImage(float diaphaneity, float outputQuality) {
@@ -154,7 +155,7 @@ public class ThumbnailatorDemo {
     }
 
     /**
-     *输出到OutPutStream
+     * 输出到OutPutStream
      */
     public static void outPutStreamImage() {
         try {
